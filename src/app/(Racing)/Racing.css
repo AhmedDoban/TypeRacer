@@ -1,0 +1,91 @@
+.Racing {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--main-background-color);
+  transition: var(--main-transition);
+}
+
+.Racing .container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.Racing .container .result {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+  width: 100%;
+  text-transform: uppercase;
+  padding: 20px 0;
+}
+.Racing .container .result p {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  letter-spacing: 5px;
+  color: var(--main-color);
+}
+.Racing .container .result p span {
+  color: var(--main-p-color);
+}
+.Racing .container .result p span.WPM {
+  color: var(--green-color);
+}
+.Racing .container .result p span.TIME {
+  color: var(--cursor-color);
+}
+.Racing .container .result p span.Mistakes {
+  color: var(--red-color);
+}
+
+.Racing .container .test {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+
+.Racing .container .test span {
+  position: relative;
+  font-size: 20px;
+  user-select: none;
+  cursor: tex;
+  color: var(--main-p-color);
+}
+
+.Racing .container .test span.Correct {
+  color: var(--main-color);
+}
+.Racing .container .test span.InCorrect {
+  color: var(--red-color);
+}
+.Racing .container .test span.active::before {
+  position: absolute;
+  content: "";
+  width: 2px;
+  height: 24px;
+  background-color: var(--cursor-color);
+  top: 0;
+  left: 0;
+  animation: bouncing 1s ease-in-out infinite;
+}
+@keyframes bouncing {
+  50% {
+    opacity: 0;
+  }
+}
+.Racing .container .test input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -9999;
+}

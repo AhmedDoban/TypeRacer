@@ -1,0 +1,51 @@
+.Def_loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: var();
+  transition: var(--main-transition);
+}
+.Def_loading .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4rem 0;
+}
+.Def_loading .container::before {
+  background: var(--secondary-glow);
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  margin-left: -200px;
+}
+
+.Def_loading .container::after {
+  background: var(--primary-glow);
+  width: 240px;
+  height: 180px;
+  z-index: -1;
+}
+.Def_loading .container::before,
+.Def_loading .container::after {
+  content: "";
+  left: 50%;
+  position: absolute;
+  filter: blur(45px);
+  transform: translateZ(0);
+}
+.Def_loading .container .Typing {
+  position: relative;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 18px !important;
+  color: var(--main-p-color);
+  transition: var(--main-transition);
+}
