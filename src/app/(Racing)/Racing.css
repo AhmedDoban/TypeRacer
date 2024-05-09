@@ -1,72 +1,178 @@
+/***************************************
+# Racing 
+****************************************/
 .Racing {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  min-height: 100vh;
+  max-width: 100%;
+  min-height: calc(100vh - 72px);
   background-color: var(--main-background-color);
   transition: var(--main-transition);
 }
 
+/***************************************
+# Racing  Container
+****************************************/
 .Racing .container {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  justify-content: center;
+  gap: 20px;
+  height: 100%;
 }
-
+/***************************************
+# Racing  Result
+****************************************/
 .Racing .container .result {
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 10px;
-  width: 100%;
-  text-transform: uppercase;
-  padding: 20px 0;
-}
-.Racing .container .result p {
-  position: relative;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
   align-items: center;
-  letter-spacing: 5px;
-  color: var(--main-color);
+  justify-content: center;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: 30vh;
 }
-.Racing .container .result p span {
-  color: var(--main-p-color);
+
+.Racing .container .result .time {
+  position: relative;
+  width: 100%;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.Racing .container .result p span.WPM {
+
+.Racing .container .result .time p {
+  position: relative;
   color: var(--green-color);
+  font-size: 70px;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
 }
-.Racing .container .result p span.TIME {
-  color: var(--cursor-color);
+
+.Racing .container .result .Mistakes {
+  position: relative;
+  font-size: 18px;
+  letter-spacing: 5px;
 }
-.Racing .container .result p span.Mistakes {
+
+.Racing .container .result .Mistakes span {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 25px;
+  font-weight: bold;
   color: var(--red-color);
 }
 
+/***************************************
+# Racing  Test
+****************************************/
 .Racing .container .test {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   width: 100%;
-  height: fit-content;
+  max-width: 100%;
+  min-width: 100%;
+  height: calc(100vh - 45vh - 72px);
+}
+
+.Racing .container .Test-Chars {
+  position: relative;
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+.Racing .container .Test-Chars::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: var(--main-race-background);
+  z-index: 1;
+}
+.Racing .container .pre-Chars {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-width: 70px;
+  max-width: 70px;
+  padding: 0 10px;
+}
+.Racing .container .Test-Chars .main-chars {
+  position: relative;
+  display: flex;
+  width: 100%;
+  text-wrap: nowrap;
+  overflow: hidden;
 }
 
 .Racing .container .test span {
   position: relative;
-  font-size: 20px;
+  font-size: 25px;
+  width: auto;
   user-select: none;
-  cursor: tex;
+  cursor: text;
   color: var(--main-p-color);
+  font-weight: bold;
+}
+.Racing .container .test span.space {
+  position: relative;
+  display: flex;
+  min-width: 30px;
+  max-width: 30px;
+  height: auto;
+}
+.Racing .container .test span.space::after {
+  position: absolute;
+  content: "";
+  width: 50% !important;
+  height: 20%;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+}
+.Racing .container .test span.Correct {
+  position: relative;
+  color: var(--green-color);
+  display: none;
 }
 
-.Racing .container .test span.Correct {
-  color: var(--main-color);
-}
 .Racing .container .test span.InCorrect {
+  position: relative;
+  color: var(--red-color);
+  display: none;
+}
+
+.Racing .container .pre-Chars span.Correct {
+  position: relative;
+  display: inline;
+  color: var(--green-color);
+}
+
+.Racing .container .pre-Chars span.InCorrect {
+  position: relative;
+  display: inline;
   color: var(--red-color);
 }
+
+.Racing .container .test span.Correct.space::after {
+  border-left: 2px solid var(--green-color);
+  border-right: 2px solid var(--green-color);
+  border-bottom: 2px solid var(--green-color);
+}
+
+.Racing .container .test span.InCorrect.space::after {
+  border-left: 2px solid var(--red-color);
+  border-right: 2px solid var(--red-color);
+  border-bottom: 2px solid var(--red-color);
+}
+
 .Racing .container .test span.active::before {
   position: absolute;
   content: "";
@@ -88,4 +194,78 @@
   left: 0;
   opacity: 0;
   z-index: -9999;
+}
+
+/***************************************
+# Racing  Loading
+****************************************/
+.Racing .container .LoadingText {
+  position: relative;
+  display: flex;
+  padding: 0 0 0 80px;
+}
+.Racing .container .LoadingText h1 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  color: var(--green-color);
+}
+/***************************************
+# Racing  Test animation
+****************************************/
+.test-race-animation {
+  position: relative;
+  width: 100%;
+  height: auto;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+.test-race-animation::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #eee;
+  bottom: 0;
+  left: 0;
+}
+.test-race-animation .race-trach {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.test-race-animation .race-trach .trach {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px;
+  transition: var(--main-transition);
+}
+.test-race-animation .race-trach .trach i {
+  color: var(--green-color);
+  font-size: 44px;
+}
+.test-race-animation .test-race-result {
+  position: relative;
+  min-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+.test-race-animation .test-race-result .CPM {
+  color: var(--cursor-color);
+}
+.test-race-animation .test-race-result .WPM {
+  color: var(--green-color);
 }

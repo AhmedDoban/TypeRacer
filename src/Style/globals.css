@@ -16,6 +16,7 @@ html {
 }
 body {
   color: rgb(var(--foreground-rgb));
+  background-color: var(--main-background-color);
 }
 
 a {
