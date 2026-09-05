@@ -26,19 +26,20 @@ function Racing() {
     try {
       SetLoading(true);
       await axios
-        .get("https://api.quotable.io/random?minLength=100&maxLength=140")
+        .get("https://dummyjson.com/quotes/random")
         .then((response) => {
-          SetText(response.data.content);
+          SetText(response.data.quote);
           if (InputRef.current) {
             InputRef.current.focus();
           }
-          SetCo_Wron(new Array(response.data.content.length).fill(null));
+          SetCo_Wron(new Array(response.data.quote.length).fill(null));
           SetCharIndex(0);
           SetTimeLeft(60);
           SetIsTyping(false);
           SetLoading(false);
         });
     } catch (err) {
+      SetLoading(false);
       toast.error("can't get Game !", {
         position: "top-right",
         autoClose: 5000,
@@ -98,7 +99,7 @@ function Racing() {
   const countMistakes = () => {
     return SetMistakes(
       Correct_Wrong.filter((ele) => ele !== null && ele.Status === "InCorrect")
-        .length
+        .length,
     );
   };
 
